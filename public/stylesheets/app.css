@@ -5,3 +5,26 @@ i.icon {
 .container.main {
   margin-top: 6em;
 }
+
+#delete {
+  display: inline;
+}
+
+.myButton {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.editButton:hover {
+  color: blue;
+}
+
+.deleteButton {
+  color: red;
+}
+
+.deleteButton:hover {
+  color: darkred;
+}

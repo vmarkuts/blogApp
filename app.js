@@ -105,6 +105,19 @@ app.put('/blogs/:id/', function(req,res){
   });
 });
 
+//DELETE route
+app.delete('/blogs/:id', function(req, res){
+  //delete blog
+  Blog.findByIdAndRemove(req.params.id, function(err){
+    if (err) {
+      res.redirect('/blogs');
+    } else {
+      //redirect somewhere
+      res.redirect('/blogs')
+    }
+  })
+});
+
 app.listen(port, function() {
   console.log('Blog App is Running on port '+port);
 });

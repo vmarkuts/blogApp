@@ -4,7 +4,6 @@
   <div class="ui huge header">
     <%= blog.title %>
   </div>
-  <a href="./<%= blog._id %>/edit">Edit Blog Post</a>
   <div class="ui top attached">
     <div class="item">
       <img class="ui centered rounded image" src="<%= blog.image %>" alt="blog post image">
@@ -16,6 +15,10 @@
       <div class="description">
         <p><%= blog.body %></p>
       </div>
+      <a class="myButton editButton" href="./<%= blog._id %>/edit"><i class="edit icon"></i></a>
+      <form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="post">
+        <button class="myButton deleteButton"><i class="trash alternate icon"></i></button>
+      </form>
     </div>
   </div>
 </div>
