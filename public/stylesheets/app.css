@@ -28,3 +28,14 @@ i.icon {
 .deleteButton:hover {
   color: darkred;
 }
+
+.ui.vertical.footer.segment {
+  padding-top: 3em;
+  margin-top: 5em;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.08) inset;
+}
+
+.ui.centered.mini.image {
+  border-radius: 50%;
+  box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.15);
+}
