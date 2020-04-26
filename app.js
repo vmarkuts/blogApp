@@ -3,11 +3,9 @@ var express = require('express'),
     mongoose = require('mongoose'),
     methodOverride = require('method-override'),
     bodyParser = require('body-parser'),
-
     app = express(),
     faker = require('faker'),
     port = 3000;
-
 
 //app config
 mongoose.connect('mongodb://localhost:27017/blog_app',  { useNewUrlParser: true, useUnifiedTopology: true });
@@ -18,15 +16,7 @@ app.use(expressSanitizer());
 app.use(methodOverride('_method'));
 
 //mongoose config
-var blogSchema = new mongoose.Schema({
-  title: String,
-  image: String,
-  body: String,
-  previewText: String,
-  created: {type: Date, default: Date.now}
-});
-
-var Blog = mongoose.model('Blog', blogSchema);
+var Blog = require('./models/blog');
 
 //RESTful routes
 
