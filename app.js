@@ -3,14 +3,13 @@ var express = require('express'),
     mongoose = require('mongoose'),
     methodOverride = require('method-override'),
     bodyParser = require('body-parser'),
-
     app = express(),
     faker = require('faker'),
     port = 3000;
 
 
 //app config
-mongoose.connect('mongodb://localhost:27017/blog_app',  { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/blog_app',  { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
