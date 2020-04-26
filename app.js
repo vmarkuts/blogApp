@@ -1,5 +1,6 @@
 var express = require('express'),
     mongoose = require('mongoose'),
+    methodOverride = require('method-override'),
     bodyParser = require('body-parser'),
     app = express(),
     faker = require('faker'),
@@ -11,6 +12,7 @@ mongoose.connect('mongodb://localhost:27017/blog_app',  { useNewUrlParser: true,
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 
 //mongoose config
 var blogSchema = new mongoose.Schema({
@@ -81,7 +83,27 @@ app.get('/blogs/:id', function(req,res){
   });
 });
 
+//EDIT route
+app.get('/blogs/:id/edit', function(req,res){
+  Blog.findById(req.params.id, function(err, foundBlog){
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('edit', {blog: foundBlog})
+    }
+  });
+});
 
+//UPDATE route
+app.put('/blogs/:id/', function(req,res){
+  Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
+    if (err) {
+      res.redirect('/blogs');
+    } else {
+      res.redirect('/blogs/' + req.params.id);
+    }
+  });
+});
 
 app.listen(port, function() {
   console.log('Blog App is Running on port '+port);
